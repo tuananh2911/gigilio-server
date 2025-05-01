@@ -1,0 +1,31 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "app.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "app.py"
+      }
+    ],
+    "env": {
+      "PYTHON_VERSION": "3.10"
+    },
+    "functions": {
+      "fastapi_app.py": {
+        "runtime": "python@3.10",
+        "handler": "app:app",
+        "environment": {
+          "DB_HOST": "ep-royal-cloud-a1ncyyrd-pooler.ap-southeast-1.aws.neon.tech",
+          "DB_NAME": "gigilio",
+          "DB_USER": "gigilio_owner",
+          "DB_PASS": "npg_akcnZJGf69Ie",
+          "DB_SSL": "require"
+        }
+      }
+    }
+  }
