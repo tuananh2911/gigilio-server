@@ -64,7 +64,12 @@ async def post_user_status(status: UserStatus):
         raise HTTPException(status_code=400, detail="Định dạng timestamp không hợp lệ")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Lỗi server: {str(e)}")
-
+@app.post("/auth")
+async def authenticate(auth: AuthRequest):
+    if auth.token == "21052025":
+        return {"status": "success", "message": "Authentication successful"}
+    else:
+        raise HTTPException(status_code=401, detail="Unauthorized: Invalid token")
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
