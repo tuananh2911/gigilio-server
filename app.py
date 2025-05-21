@@ -17,7 +17,8 @@ class UserStatus(BaseModel):
     userId: str
     function: str
     timestamp: str
-
+class AuthRequest(BaseModel):
+    token: str
 # Initialize database
 def init_db():
     conn = psycopg2.connect(
